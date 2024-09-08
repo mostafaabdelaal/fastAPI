@@ -9,5 +9,6 @@ steps:
 
 images:
   - 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0'
+
 options:
   logging: CLOUD_LOGGING_ONLY
