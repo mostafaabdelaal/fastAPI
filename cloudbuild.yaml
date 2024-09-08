@@ -1,0 +1,11 @@
+steps:
+  # Step to build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'northamerica-northeast1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0', '.']
+
+  # Step to push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'northamerica-northeast1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0']
+
+images:
+  - 'northamerica-northeast1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0'
