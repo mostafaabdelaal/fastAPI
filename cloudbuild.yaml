@@ -11,9 +11,6 @@ images:
   - 'northamerica-northeast1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0'
 # Options for the build
 options:
-  # Specify the logging option (cloud logging and bucket logging)
-  logging: CLOUD_LOGGING_ONLY
-  # Specify the bucket to store the logs (replace with your bucket name)
-  logsBucket: "gs://my-build-logs-bucket"
+  logging: CLOUD_LOGGING_ONLY # Specify where logs are sent (Cloud Logging)
 
 timeout: '1200s' # Set the maximum build time
