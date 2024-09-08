@@ -12,5 +12,6 @@ images:
 # Options for the build
 options:
   logging: CLOUD_LOGGING_ONLY # Specify where logs are sent (Cloud Logging)
+  region: us-central1 # Specify the supported region here
 
 timeout: '1200s' # Set the maximum build time
