@@ -32,5 +32,5 @@ steps:
 images:
   - 'gcr.io/cobalt-ship-434308-h6/trial1/trial:1.0'
 
-options:
-  logging: CLOUD_LOGGING_ONLY
+#options:
+#  logging: CLOUD_LOGGING_ONLY
