@@ -6,7 +6,31 @@ steps:
   # Step to push the Docker image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0']
+steps:
+  # Step to build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0', '.']
 
+  # Step to push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'trial'
+      - '--image'
+      - 'gcr.io/cobalt-ship-434308-h6/trial:1.0'
+      - '--region'
+      - 'asia-east1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+
+images:
+  - 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0'
 images:
   - 'asia-east1-docker.pkg.dev/cobalt-ship-434308-h6/trial1/trial:1.0'
 
