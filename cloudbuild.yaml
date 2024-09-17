@@ -20,8 +20,8 @@ steps:
     args:
       - '-c'
       - |
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics  # Check for critical lint errors
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check code style and complexity
+        /workspace/venv/bin/flake8  . --count --select=E9,F63,F7,F82 --show-source --statistics  # Check for critical lint errors
+        /workspace/venv/bin/flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check code style and complexity
 
   # Step 3: Run Pytest for unit testing
   - name: 'python:3.8-slim'
@@ -29,7 +29,7 @@ steps:
     args:
       - '-c'
       - |
-        /usr/local/bin/pytest --maxfail=1 --disable-warnings  # Run pytest to execute tests
+        /workspace/venv/bin/pytest --maxfail=1 --disable-warnings  # Run pytest to execute tests
 
   # Step to build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
