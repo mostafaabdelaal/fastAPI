@@ -5,7 +5,8 @@ steps:
     args:
       - '-c'
       - |
-        pip install --upgrade -r requirements.txt
+        pip install -r requirements.txt
+        pip install flake8 pytest  # Install flake8 and pytest explicitly
 
   # Step 2: Run Flake8 for linting
   - name: 'python:3.8-slim'
