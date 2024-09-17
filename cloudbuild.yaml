@@ -5,6 +5,8 @@ steps:
     args:
       - '-c'
       - |
+        python -m venv venv
+        source venv/bin/activate
         pip install -r requirements.txt
         which flake8 || echo "flake8 not found in PATH"
         which pytest || echo "pytest not found in PATH"
