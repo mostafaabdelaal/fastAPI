@@ -1,4 +1,13 @@
 steps:
+  # Step 1: Run Flake8 lint testing
+  - name: 'python:3.8-slim' # Use Python 3.8 for running Flake8
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install flake8
+        flake8 . --exit-zero  # Runs linting and prevents failure if there are warnings
+
   # Step to build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/cobalt-ship-434308-h6/trial1/trial:1.0', '.']
