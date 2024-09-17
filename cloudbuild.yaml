@@ -1,12 +1,28 @@
 steps:
-  # Step 1: Run Flake8 lint testing
-  - name: 'python:3.8-slim' # Use Python 3.8 for running Flake8
+  # Step 1: Install dependencies
+  - name: 'python:3.8-slim'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        pip install flake8
-        flake8 . --exit-zero  # Runs linting and prevents failure if there are warnings
+        pip install -r requirements.txt
+
+  # Step 2: Run Flake8 for linting
+  - name: 'python:3.8-slim'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics  # Check for critical lint errors
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics  # Check code style and complexity
+
+  # Step 3: Run Pytest for unit testing
+  - name: 'python:3.8-slim'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pytest --maxfail=1 --disable-warnings  # Run pytest to execute tests
 
   # Step to build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
