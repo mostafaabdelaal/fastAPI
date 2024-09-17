@@ -10,6 +10,9 @@ steps:
         which pytest || echo "pytest not found in PATH"
         flake8 --version
         pytest --version
+        echo $PATH  # Check if /usr/local/bin is in the PATH
+        /usr/local/bin/flake8 .  # Using the full path
+        /usr/local/bin/pytest tests/  # Using the full path
 
   # Step 2: Run Flake8 for linting
   - name: 'python:3.8-slim'
